@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -109,4 +111,28 @@ public class CovidTrackController {
 		return responseEntity;
 
 	}
+
+	@GetMapping(value = "/getall/{userid}")
+	public ResponseEntity<?> findAllContacts(@PathVariable("userid") String userId) {
+		LOG.info("******** Controller layer Entry********");
+		List<PrimaryContacts> allContacts = null;
+		ResponseEntity<?> responseEntity = null;
+		try {
+			if (userId != null) {
+				allContacts = trackerService.findAllContacts(userId);
+			}
+
+			if (allContacts != null) {
+				responseEntity = new ResponseEntity<>(allContacts, HttpStatus.OK);
+			} else {
+				responseEntity = ResponseEntity.status(HttpStatus.CONFLICT).build();
+			}
+		} catch (Exception ex) {
+			responseEntity = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+		}
+
+		return responseEntity;
+
+	}
+
 }

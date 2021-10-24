@@ -15,4 +15,6 @@ public interface CovidTrackRepo extends JpaRepository<PrimaryContacts, Integer>{
 	 List<PrimaryContacts> findAllByUserIdAndContactName(String userId,String name);
 	 
 	 List<PrimaryContacts> findAllByUserIdAndDate(String userId,Date date);
+	 
+	 List<PrimaryContacts> findAllByUserId(String userId);
 }

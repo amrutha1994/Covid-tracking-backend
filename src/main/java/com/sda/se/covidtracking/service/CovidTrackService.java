@@ -41,4 +41,9 @@ public class CovidTrackService {
 		}
 		return contactsFound;
 	}
+
+	public List<PrimaryContacts> findAllContacts(String userId) {
+		return covidTrackerRepo.findAllByUserId(userId);
+
+	}
 }
