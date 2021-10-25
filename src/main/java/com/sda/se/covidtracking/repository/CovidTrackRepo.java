@@ -8,13 +8,18 @@ import org.springframework.stereotype.Repository;
 
 import com.sda.se.covidtracking.model.PrimaryContacts;
 
+/**
+ * Repository layer for Covid tracker
+ * 
+ * @author amrutha
+ *
+ */
 @Repository
-public interface CovidTrackRepo extends JpaRepository<PrimaryContacts, Integer>{
+public interface CovidTrackRepo extends JpaRepository<PrimaryContacts, Integer> {
 
-	
-	 List<PrimaryContacts> findAllByUserIdAndContactName(String userId,String name);
-	 
-	 List<PrimaryContacts> findAllByUserIdAndDate(String userId,Date date);
-	 
-	 List<PrimaryContacts> findAllByUserId(String userId);
+	List<PrimaryContacts> findAllByUserIdAndContactName(String userId, String name);
+
+	List<PrimaryContacts> findAllByUserIdAndDate(String userId, Date date);
+
+	List<PrimaryContacts> findAllByUserId(String userId);
 }

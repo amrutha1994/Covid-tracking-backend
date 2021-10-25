@@ -16,6 +16,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Entity class for primary contacts
+ * 
+ * @author amru1
+ *
+ */
+
 @Data
 @Entity
 @NoArgsConstructor
